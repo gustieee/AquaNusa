@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Aquarium Nusa</title>
+  <meta name="description" content="Login ke Aquarium Nusa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+  <main class="login-shell">
+    <section class="login-card">
+      <div class="login-brand">Aqua Nusa</div>
+      <p class="login-subtitle">Masuk untuk melanjutkan</p>
+      <form id="loginForm" class="login-form">
+        <label class="login-field">
+          <span>Email</span>
+          <input type="email" name="email" required placeholder="nama@aquarium.com">
+        </label>
+        <label class="login-field">
+          <span>Password</span>
+          <input type="password" name="password" required placeholder="********">
+        </label>
+        <div class="login-error" id="loginError" hidden>Email atau password salah.</div>
+        <button class="button button-primary button-full" type="submit">Login</button>
+        <a class="login-forgot" href="#">Lupa password?</a>
+      </form>
+    </section>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    (function () {
+      var form = document.getElementById("loginForm");
+      var error = document.getElementById("loginError");
+      if (!form || !window.Auth) return;
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var formData = new FormData(form);
+        var email = String(formData.get("email") || "");
+        var password = String(formData.get("password") || "");
+        var result = window.Auth.login(email, password);
+        if (!result.success) {
+          error.hidden = false;
+          return;
+        }
+        error.hidden = true;
+        if (result.role === "admin") {
+          window.location.href = "admin/dashboard.html";
+        } else {
+          window.location.href = "index.html";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

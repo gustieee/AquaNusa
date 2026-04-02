@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keranjang | Aqua Nusa</title>
+  <meta name="description" content="Tinjau pesanan aquarium Anda di Aquarium Nusa dan checkout via WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="keranjang">
+  <div class="site-shell">
+    <header class="site-header" id="siteHeader">
+      <nav class="navbar container">
+        <a class="brand" href="index.html"><span class="brand-mark">🐠</span><span class="brand-text">Aqua Nusa</span></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-panel" id="navPanel">
+          <div class="nav-links">
+            <a href="index.html">Beranda</a><a href="produk.html">Produk</a><a href="jasa.html">Jasa</a><a href="keranjang.html">Keranjang</a>
+          </div>
+          <a class="cart-link cart-icon-wrapper" href="keranjang.html" aria-label="Keranjang belanja"><span class="cart-icon">🛒</span><span class="cart-badge" data-cart-count>0</span></a>
+        </div>
+      </nav>
+    </header>
+    <main class="page-main">
+      <section class="page-header container fade-in">
+        <span class="eyebrow">Keranjang Belanja</span>
+        <h1>Ringkasan pesanan aquarium Anda</h1>
+        <p>Atur jumlah item, cek estimasi total, lalu lanjutkan checkout praktis melalui WhatsApp.</p>
+      </section>
+      <section class="section section-compact">
+        <div class="container cart-layout">
+          <div class="cart-items-panel"><div id="cartContent"></div></div>
+          <aside class="summary-card glass-card fade-in" id="cartSummary">
+            <h2>Ringkasan Order</h2>
+            <div class="summary-line"><span>Subtotal</span><strong id="subtotalValue">Rp 0</strong></div>
+            <div class="summary-line"><span>Estimasi Ongkir</span><strong id="shippingValue">Rp 0</strong></div>
+            <div class="summary-line summary-total"><span>Total</span><strong id="totalValue">Rp 0</strong></div>
+            <a class="button button-primary button-full" id="checkoutButton" href="#">Checkout via WhatsApp</a>
+            <button class="button button-ghost button-full" id="clearCartButton" type="button">Kosongkan Keranjang</button>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="index.html"><span class="brand-mark">🐠</span><span class="brand-text">Aqua Nusa</span></a>
+          <p>Luxury aquarium living with curated marine elegance.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a><a href="produk.html">Produk</a><a href="jasa.html">Jasa</a><a href="keranjang.html">Keranjang</a>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="TikTok">TT</a><a href="#" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+      <div class="container footer-bottom"><p>&copy; 2026 Aqua Nusa. All rights reserved.</p></div>
+    </footer>
+  </div>
+  <script src="data/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart-animation.js"></script>
+</body>
+</html>
