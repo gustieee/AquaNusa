@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manajemen Jasa | Aqua Nusa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-logo">Aqua Nusa Admin</div>
+      <nav class="admin-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="products.html">Produk</a>
+        <a class="active" href="jasa.html">Jasa</a>
+        <a href="#" id="adminLogout">Keluar</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h1>Manajemen Jasa</h1>
+      </div>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama Jasa</th>
+            <th>Deskripsi</th>
+          </tr>
+        </thead>
+        <tbody id="services-tbody"></tbody>
+      </table>
+    </main>
+  </div>
+
+  <script src="../data/data.js"></script>
+  <script src="js/jasa.js"></script>
+  <script>
+    (function () {
+      var logout = document.getElementById("adminLogout");
+      if (!logout) return;
+      logout.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (window.Auth && window.Auth.logout) {
+          window.Auth.logout();
+        } else {
+          window.location.href = "../login.html";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin | Aqua Nusa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-logo">Aqua Nusa Admin</div>
+      <nav class="admin-nav">
+        <a class="active" href="dashboard.html">Dashboard</a>
+        <a href="products.html">Produk</a>
+        <a href="jasa.html">Jasa</a>
+        <a href="#" id="adminLogout">Keluar</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h1>Selamat datang, <span id="adminName">Admin</span></h1>
+        <button class="admin-btn" id="adminLogoutTop">Keluar</button>
+      </div>
+
+      <section class="admin-card-grid">
+        <div class="admin-card">
+          <h3>Total Produk</h3>
+          <p id="statTotal">0</p>
+        </div>
+        <div class="admin-card">
+          <h3>Total Ikan</h3>
+          <p id="statIkan">0</p>
+        </div>
+        <div class="admin-card">
+          <h3>Total Peralatan</h3>
+          <p id="statPeralatan">0</p>
+        </div>
+        <div class="admin-card">
+          <h3>Total Dekorasi</h3>
+          <p id="statDekorasi">0</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Produk Terbaru</h2>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Kategori</th>
+              <th>Harga</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="recentProducts"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="../data/data.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script>
+    (function () {
+      var session = window.Auth && window.Auth.getSession ? window.Auth.getSession() : null;
+      var nameEl = document.getElementById("adminName");
+      if (session && nameEl) nameEl.textContent = session.name;
+      var logoutButtons = [document.getElementById("adminLogout"), document.getElementById("adminLogoutTop")];
+      logoutButtons.forEach(function (btn) {
+        if (btn) btn.addEventListener("click", function (event) {
+          event.preventDefault();
+          if (window.Auth && window.Auth.logout) {
+            window.Auth.logout();
+          } else {
+            window.location.href = "../login.html";
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

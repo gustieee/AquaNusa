@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manajemen Produk | Aqua Nusa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-logo">Aqua Nusa Admin</div>
+      <nav class="admin-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a class="active" href="products.html">Produk</a>
+        <a href="jasa.html">Jasa</a>
+        <a href="#" id="adminLogout">Keluar</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1 class="admin-title">Manajemen Produk</h1>
+          <p class="admin-subtitle">Kelola data produk aquarium secara ringkas.</p>
+        </div>
+        <button class="admin-btn admin-btn-gradient" id="addProductBtn" type="button">+ Tambah Produk</button>
+      </div>
+
+      <div class="admin-filter-row modern-row">
+        <div class="admin-search">
+          <span class="admin-search-icon">🔍</span>
+          <input class="admin-input" type="text" id="search-input" placeholder="Cari produk...">
+        </div>
+        <div class="admin-pill-group">
+          <button class="admin-pill filter-btn active" data-category="semua">Semua</button>
+          <button class="admin-pill filter-btn" data-category="ikan">Ikan</button>
+          <button class="admin-pill filter-btn" data-category="peralatan">Peralatan</button>
+          <button class="admin-pill filter-btn" data-category="dekorasi">Dekorasi</button>
+        </div>
+      </div>
+
+      <div class="admin-table-card">
+        <table class="admin-table modern-table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Gambar</th>
+              <th>Nama</th>
+              <th>Kategori</th>
+              <th>Harga</th>
+              <th>Stok</th>
+            </tr>
+          </thead>
+          <tbody id="products-tbody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="productModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Tambah Produk Baru</h2>
+        <button class="modal-close" type="button" id="modalClose">×</button>
+      </div>
+      <form class="modal-form">
+        <label>
+          Nama Produk
+          <input type="text" placeholder="Contoh: Ikan Cupang Halfmoon">
+        </label>
+        <label>
+          Kategori
+          <select>
+            <option value="">Pilih Kategori</option>
+            <option value="ikan">Ikan</option>
+            <option value="peralatan">Peralatan</option>
+            <option value="dekorasi">Dekorasi</option>
+          </select>
+        </label>
+        <label>
+          Harga
+          <div class="input-prefix">
+            <span>Rp</span>
+            <input type="number" placeholder="150000">
+          </div>
+        </label>
+        <label>
+          Stok
+          <input type="number" placeholder="10">
+        </label>
+        <label>
+          Deskripsi
+          <textarea rows="3" placeholder="Deskripsi singkat produk..."></textarea>
+        </label>
+        <label>
+          URL Gambar
+          <input type="text" placeholder="https://...">
+        </label>
+        <div class="modal-actions">
+          <button class="admin-btn secondary" type="button" id="modalCancel">Batal</button>
+          <button class="admin-btn admin-btn-gradient" type="button" id="modalSave">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../data/data.js"></script>
+  <script src="js/products.js"></script>
+  <script>
+    (function () {
+      var logout = document.getElementById("adminLogout");
+      if (!logout) return;
+      logout.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (window.Auth && window.Auth.logout) {
+          window.Auth.logout();
+        } else {
+          window.location.href = "../login.html";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

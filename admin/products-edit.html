@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Produk | Aqua Nusa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-logo">Aqua Nusa Admin</div>
+      <nav class="admin-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a class="active" href="products.html">Produk</a>
+        <a href="jasa.html">Jasa</a>
+        <a href="#" id="adminLogout">Keluar</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h1>Edit Produk</h1>
+      </div>
+      <p>Data bersifat statis. Pengeditan produk dinonaktifkan.</p>
+      <a class="admin-btn secondary" href="products.html">Kembali</a>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      var logout = document.getElementById("adminLogout");
+      if (!logout) return;
+      logout.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (window.Auth && window.Auth.logout) {
+          window.Auth.logout();
+        } else {
+          window.location.href = "../login.html";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
